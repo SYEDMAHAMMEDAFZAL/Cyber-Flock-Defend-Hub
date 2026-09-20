@@ -1,0 +1,25 @@
+# Python
+backend/venv/
+backend/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+__pycache__/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+blockchain/node_modules/
+blockchain/artifacts/
+blockchain/cache/
+
+# Environment and logs
+*.log
+.env.local
+.DS_Store
+
+# Secrets and Databases
+backend/.env
+backend/cyber_flock.db*
+

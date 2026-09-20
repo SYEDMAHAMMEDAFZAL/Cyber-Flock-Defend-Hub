@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: #04070a;
+    color: #f1f5f9;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Professional Enterprise Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060b0e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #152529;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00e599;
+}
+
+/* 3D Holographic Perspective Effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+  background: linear-gradient(135deg, rgba(14, 23, 26, 0.85) 0%, rgba(6, 11, 14, 0.95) 100%);
+  border: 1px solid rgba(24, 38, 42, 0.9);
+}
+
+.card-3d:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(0, 229, 153, 0.4);
+  box-shadow: 0 16px 36px -10px rgba(0, 229, 153, 0.18), 0 0 20px rgba(0, 229, 153, 0.08);
+}
+
+/* Subtle Modern Accents */
+.subtle-emerald-glow {
+  box-shadow: 0 0 20px rgba(0, 229, 153, 0.2);
+}
+
+.subtle-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 229, 153, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 153, 0.03) 1px, transparent 1px);
+}
+
+/* Screen Deterrence Blur */
+.deterrence-blurred {
+  filter: blur(12px) grayscale(0.6);
+  pointer-events: none;
+  user-select: none;
+  transition: filter 0.2s ease-in-out;
+}
+
+/* Board-Ready Print Stylesheet for Audit Reports */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+  }
+  
+  header, aside, button, nav, .no-print {
+    display: none !important;
+  }
+  
+  .print-only-block {
+    display: block !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .print-page-break {
+    page-break-inside: avoid;
+  }
+}
