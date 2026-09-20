@@ -128,7 +128,7 @@ export const AttackWizard = () => {
       
       // Auto-submit to Hyperledger Fabric Orderer
       try {
-        const riskIdStr = data.risk_result?.id || data.id || `RISK-${Math.floor(Math.random()*1000)}`;
+        const riskIdStr = `RISK-${Math.floor(Math.random() * 900) + 100}`;
         const fabricPayload = {
             id: riskIdStr,
             endpointId: `EP-SIM-${Math.floor(Math.random() * 1000)}`,
