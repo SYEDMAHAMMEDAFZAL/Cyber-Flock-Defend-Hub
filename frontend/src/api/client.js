@@ -119,7 +119,7 @@ export const auditAPI = {
 // Hyperledger Fabric API endpoints
 export const fabricAPI = {
   getStatus: () => api.get('/blockchain/status'),
-  getAllRisks: () => api.get('/blockchain/risks'),
+  getAllRisks: () => api.get(`/blockchain/risks?t=${Date.now()}`),
   submitRisk: (data) => api.post('/blockchain/risk', data)
 };
 
