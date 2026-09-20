@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Server, Link, ShieldCheck, Activity } from 'lucide-react';
+import { Server, Link, ShieldCheck, Activity, FileText, Download } from 'lucide-react';
 import { fabricAPI } from '../api/client';
 
 export const BlockchainLedger = () => {
@@ -101,6 +101,7 @@ export const BlockchainLedger = () => {
                 <th className="px-4 py-3">Financial Risk</th>
                 <th className="px-4 py-3">SHA-256 Digest</th>
                 <th className="px-4 py-3">Status</th>
+                <th className="px-4 py-3 text-right">Report</th>
               </tr>
             </thead>
             <tbody className="text-slate-300 divide-y divide-[#18262a]">
@@ -130,11 +131,29 @@ export const BlockchainLedger = () => {
                       <span className="text-[10px] text-slate-500">{tx.verification}</span>
                     </div>
                   </td>
+                  <td className="px-4 py-3 text-right">
+                    <button
+                      onClick={() => {
+                        const reportContent = `Cyber Flock Defense Hub - Ledger Audit Report\n\nRisk ID: ${tx.id}\nEndpoint: ${tx.endpointId}\nRisk Score: ${tx.riskScore}\nFinancial Value at Risk: $${tx.var}\n\nBlockchain Anchor:\nSHA-256 Digest: ${tx.sha256Hash}\nTimestamp: ${new Date(tx.timestamp).toISOString()}\nStatus: COMMITTED (Hyperledger Fabric 2.5)\nVerification: Org1MSP & Org2MSP Endorsed`;
+                        const blob = new Blob([reportContent], { type: 'text/plain' });
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = `Audit_Report_${tx.id}.txt`;
+                        a.click();
+                        URL.revokeObjectURL(url);
+                      }}
+                      className="text-emerald-400 hover:text-emerald-300 p-2 rounded hover:bg-emerald-400/10 transition-colors inline-flex"
+                      title="Download Audit Report"
+                    >
+                      <Download className="w-4 h-4" />
+                    </button>
+                  </td>
                 </tr>
               ))}
               {transactions.length === 0 && (
                 <tr>
-                  <td colSpan="5" className="px-4 py-8 text-center text-slate-500">
+                  <td colSpan="6" className="px-4 py-8 text-center text-slate-500">
                     No transactions found in the ledger.
                   </td>
                 </tr>
