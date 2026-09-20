@@ -355,9 +355,13 @@ export const Dashboard = () => {
                 {criticalVulns} Critical Vulns Active
               </div>
             </div>
-            <div className="w-12 h-12 rounded-full border-4 border-rose-500/20 border-t-rose-500 flex items-center justify-center font-mono text-[10px] font-bold text-rose-400">
-              {riskScore}%
-            </div>
+              <div className="relative w-12 h-12 flex items-center justify-center">
+                <svg className="absolute inset-0 w-full h-full -rotate-90">
+                  <circle cx="24" cy="24" r="20" stroke="currentColor" strokeWidth="4" fill="none" className="text-rose-500/20" />
+                  <circle cx="24" cy="24" r="20" stroke="currentColor" strokeWidth="4" fill="none" className="text-rose-500 transition-all duration-1000 ease-out" strokeDasharray="125.6" strokeDashoffset={125.6 - (125.6 * riskScore / 100)} strokeLinecap="round" />
+                </svg>
+                <span className="font-mono text-[10px] font-bold text-rose-400 relative z-10">{riskScore}%</span>
+              </div>
           </div>
         </div>
       </div>
