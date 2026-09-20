@@ -127,6 +127,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     if (currency === 'INR') {
+      val = val * USD_TO_INR;
       return new Intl.NumberFormat('en-IN', {
         style: 'currency',
         currency: 'INR',
