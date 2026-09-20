@@ -236,23 +236,23 @@ export const Login = () => {
             </div>
             
             <div className="border-t border-b border-slate-200 py-1">
-              <button 
-                type="button"
-                onClick={() => {
-                  setCustomGoogleEmail('ciso@cyberflock.defense');
-                  setCustomGoogleName('Cyber CISO');
-                  handleGoogleSignIn({ preventDefault: () => {} });
-                }}
-                className="w-full flex items-center gap-4 px-8 py-3 hover:bg-slate-50 transition-colors text-left"
-              >
-                <div className="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center text-white font-semibold text-lg shrink-0">
-                  C
-                </div>
-                <div>
-                  <div className="text-slate-900 text-sm font-medium">Cyber CISO</div>
-                  <div className="text-slate-500 text-sm">ciso@cyberflock.defense</div>
-                </div>
-              </button>
+                <button 
+                  type="button"
+                  onClick={() => {
+                    setCustomGoogleEmail('syedmahammedafzal@gmail.com');
+                    setCustomGoogleName('S.Md.Afzal');
+                    handleGoogleSignIn({ preventDefault: () => {} });
+                  }}
+                  className="w-full flex items-center gap-4 px-8 py-3 hover:bg-slate-50 transition-colors text-left"
+                >
+                  <div className="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center text-white font-semibold text-lg shrink-0">
+                    S
+                  </div>
+                  <div>
+                    <div className="text-slate-900 text-sm font-medium">S.Md.Afzal</div>
+                    <div className="text-slate-500 text-sm">syedmahammedafzal@gmail.com</div>
+                  </div>
+                </button>
 
               <button 
                 type="button"
