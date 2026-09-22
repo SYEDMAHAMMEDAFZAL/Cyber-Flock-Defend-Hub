@@ -19,39 +19,51 @@ export const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [googleLoading, setGoogleLoading] = useState(false);
-  const [showGoogleModal, setShowGoogleModal] = useState(false);
-  const [customGoogleEmail, setCustomGoogleEmail] = useState('');
-  const [customGoogleName, setCustomGoogleName] = useState('');
+  const [longLoading, setLongLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e?.preventDefault();
     setError('');
     setLoading(true);
+    setLongLoading(false);
+    
+    // Set a timeout to show the "waking up" message if it takes more than 4 seconds
+    const timeoutId = setTimeout(() => setLongLoading(true), 4000);
+
     try {
       await login(email, password);
+      clearTimeout(timeoutId);
       navigate('/dashboard');
     } catch (err) {
+      clearTimeout(timeoutId);
       console.error('Login error:', err);
       setError(
         err.response?.data?.detail || 'Authentication failed. Please verify your credentials and try again.'
       );
     } finally {
       setLoading(false);
+      setLongLoading(false);
     }
   };
 
   const handleSuperAdminLogin = async () => {
     setError('');
     setLoading(true);
+    setLongLoading(false);
+
+    const timeoutId = setTimeout(() => setLongLoading(true), 4000);
+
     try {
       await login('admin@cyberflock.defense', 'AdminSecurePassword123!');
+      clearTimeout(timeoutId);
       navigate('/dashboard');
     } catch (err) {
+      clearTimeout(timeoutId);
       console.error('Login error:', err);
       setError('SuperAdmin Authentication failed.');
     } finally {
       setLoading(false);
+      setLongLoading(false);
     }
   };
 
@@ -194,7 +206,7 @@ export const Login = () => {
               disabled={loading}
               className="w-full bg-white text-slate-900 font-semibold rounded-lg py-2.5 text-sm hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950 mt-4 disabled:opacity-70"
             >
-              {loading ? 'Authenticating...' : 'Sign In'}
+                {loading ? (longLoading ? 'Waking up secure server (please wait)...' : 'Authenticating...') : 'Sign In'}
             </button>
           </form>
         </div>
